@@ -1,5 +1,7 @@
 package com.aula2.demo.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -103,6 +105,16 @@ public class AlunoController {
         return "alunos/atividade";
     }
 
+    @GetMapping("/info")
+    public String info(Model model) {
+        String mensagem = "Nome da aplicação: aula 2<br>" 
+            + "Versão do Java: " + System.getProperty("java.version") + "<br>" 
+            + "Data e Hora Atual: " + LocalDateTime.now().toString() + "<br>" 
+            + " Aplicação funcionando!";
+
+        model.addAttribute("mensagem", mensagem); 
+        return "alunos/atividade";
+    }
     /**
      * GET /alunos/excluir/{id}
      * Exclui o aluno com o ID informado e redireciona para a lista.
