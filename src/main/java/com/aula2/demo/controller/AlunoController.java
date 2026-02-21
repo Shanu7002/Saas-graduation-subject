@@ -1,8 +1,5 @@
 package com.aula2.demo.controller;
 
-import com.aula2.demo.model.Aluno;
-import com.aula2.demo.service.AlunoService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.aula2.demo.model.Aluno;
+import com.aula2.demo.service.AlunoService;
+
+import lombok.RequiredArgsConstructor;
 
 /**
  * Controller responsável por tratar as requisições HTTP relacionadas a Alunos.
@@ -86,6 +88,19 @@ public class AlunoController {
         Aluno aluno = alunoService.buscarPorId(id);
         model.addAttribute("aluno", aluno);
         return "alunos/formulario";
+    }
+
+    @GetMapping("/saudacao/{name}")
+    public String saudacao(@PathVariable String name, Model model) {
+        model.addAttribute("mensagem", "Olá, " + name + "! Bem-vindo(a) ao Spring Boot!");
+        return "alunos/atividade";
+    }
+
+    @GetMapping("/soma/{numero1}/{numero2}")
+    public String soma(@PathVariable Long numero1, @PathVariable Long numero2, Model model) {
+        Long sum = numero1 + numero2;
+        model.addAttribute("mensagem", sum);
+        return "alunos/atividade";
     }
 
     /**
