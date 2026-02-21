@@ -115,6 +115,13 @@ public class AlunoController {
         model.addAttribute("mensagem", mensagem); 
         return "alunos/atividade";
     }
+
+    // é surpresa, nao abre o link <3
+    @GetMapping("/surpresa")
+    public String surprise(Model model) {
+        model.addAttribute("image", "https://imgs.search.brave.com/dxAKPFtmGbjq6A8H_ag-p9XJyI1axdbHO4eBhc-squg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/d2hhdC1kby15b3Ut/dXNlLWJ0dy12MC1q/eXVyeTVrcnRuYWQx/LnBuZz9hdXRvPXdl/YnAmcz1kNTliYzBm/Y2Q4YTE1NDEzMDk2/NmY2Y2Y1ODQ3NjQ3/ZmIzOTgzMWU3");
+        return "alunos/surpresa";
+    }
     /**
      * GET /alunos/excluir/{id}
      * Exclui o aluno com o ID informado e redireciona para a lista.
