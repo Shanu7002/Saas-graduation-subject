@@ -93,7 +93,14 @@ public class AlunoController {
     @GetMapping("/saudacao/{name}")
     public String saudacao(@PathVariable String name, Model model) {
         model.addAttribute("mensagem", "Olá, " + name + "! Bem-vindo(a) ao Spring Boot!");
-        return "alunos/saudacao";
+        return "alunos/atividade";
+    }
+
+    @GetMapping("/soma/{numero1}/{numero2}")
+    public String soma(@PathVariable Long numero1, @PathVariable Long numero2, Model model) {
+        Long sum = numero1 + numero2;
+        model.addAttribute("mensagem", sum);
+        return "alunos/atividade";
     }
 
     /**
